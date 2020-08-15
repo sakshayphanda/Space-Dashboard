@@ -1,0 +1,6 @@
+runtime: nodejs10
+handlers:
+  # Routing for bundles to serve directly
+  - url: /(.*\.(gif|png|jpeg|jpg|css|js|ico))$
+    static_files: dist/spacexDashboard/browser/\1
+    upload: dist/spacexDashboard/browser/(.*)

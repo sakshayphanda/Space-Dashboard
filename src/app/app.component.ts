@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Meta} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'spacexDashboard';
+  favicon_url= '../favicon.ico';
+
+  constructor(private meta: Meta) {
+
+  }
+  ngOnInit() {
+    this.meta.addTag({name: 'Hi', content: 'sakshay'});
+  }
 }
