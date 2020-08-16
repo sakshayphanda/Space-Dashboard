@@ -1,25 +1,33 @@
 <div class="sidebar">
   <div class="filters">
-    <div>Filters</div>
-    <div>Launch Year</div>
+    <div class="heading">Filters</div>
+    <p class="filter__title">Launch Year</p>
     <div class="year">
       <ng-container *ngFor="let year of (globalDataService.launchYears | async)">
-        <button  mat-stroked-button (click)="changeSelectedYear(year)">{{year}}</button>
+        <button [class.selected]="filters.has(API.LAUNCH_YEAR) && filters.get(API.LAUNCH_YEAR) === year"
+          mat-raised-button (click)="changeSelectedYear(year)">{{year}}</button>
       </ng-container>
     </div>
-    <div>
-      <p>Successful Launch</p>
-      <div class="buttons">
-        <button mat-stroked-button (click)="changeLaunchFilter(true)">True</button>
-        <button mat-stroked-button (click)="changeLaunchFilter(false)">False</button>
-      </div>
+    <p class="filter__title">Successful Launch</p>
+    <div class="launch">
+      <button [class.selected]="filters.has(API.LAUNCH_SUCCESS) && filters.get(API.LAUNCH_SUCCESS)" mat-raised-button
+        (click)="changeLaunchFilter(true)">True</button>
+      <button [class.selected]="filters.has(API.LAUNCH_SUCCESS) && !filters.get(API.LAUNCH_SUCCESS)" mat-raised-button
+        (click)="changeLaunchFilter(false)">False</button>
+    </div>
+
+    <p class="filter__title">Successful Landing</p>
+    <div class="land">
+      <button [class.selected]="filters.has(API.LAND_SUCCESS) && filters.get(API.LAND_SUCCESS)" mat-raised-button
+        (click)="changeLandingFilter(true)">True</button>
+      <button [class.selected]="filters.has(API.LAND_SUCCESS) && !filters.get(API.LAND_SUCCESS)" mat-raised-button
+        (click)="changeLandingFilter(false)">False</button>
     </div>
 
     <div>
-      <p>Successful Landing</p>
+      <p class="filter__title">Reset All Filters</p>
       <div class="buttons">
-        <button mat-stroked-button (click)="changeLandingFilter(true)">True</button>
-        <button mat-stroked-button (click)="changeLandingFilter(false)">False</button>
+        <button mat-raised-button (click)="fetchFilteredData(true)">Reset</button>
       </div>
     </div>
 

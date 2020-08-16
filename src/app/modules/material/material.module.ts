@@ -9,6 +9,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { LayoutModule } from '@angular/cdk/layout';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 const modules = [
@@ -21,7 +22,8 @@ const modules = [
   MatCardModule,
   MatMenuModule,
   MatButtonModule,
-  LayoutModule
+  LayoutModule,
+  BrowserAnimationsModule
 ];
 
 @NgModule({

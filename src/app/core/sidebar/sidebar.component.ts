@@ -11,6 +11,7 @@ import { HttpService } from '../../shared/services/http.service';
 })
 export class SidebarComponent implements OnInit {
   filters = new Map();
+  API = API;
   constructor(
     public globalDataService: GlobalDataService,
     private httpService: HttpService
@@ -33,8 +34,13 @@ export class SidebarComponent implements OnInit {
     this.fetchFilteredData();
   }
 
-  fetchFilteredData() {
+  fetchFilteredData(reset?) {
     let URL = `${API.ALL_DATA}`;
+    if (reset) {
+      this.filters.clear();
+      this.hitApi(URL);
+      return;
+    }
     if (this.filters.has(API.LAUNCH_YEAR)) {
       URL = URL + `&${API.LAUNCH_YEAR}=${this.filters.get(API.LAUNCH_YEAR)}`;
     }
@@ -45,6 +51,10 @@ export class SidebarComponent implements OnInit {
       URL =
         URL + `&${API.LAUNCH_SUCCESS}=${this.filters.get(API.LAUNCH_SUCCESS)}`;
     }
+    this.hitApi(URL);
+  }
+
+  hitApi(URL) {
     this.httpService.get(URL).subscribe((i) => {
       this.globalDataService.allData.next(i);
     });

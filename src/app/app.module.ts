@@ -16,7 +16,7 @@ import { HttpService } from './shared/services/http.service';
     AppComponent,
   ],
   imports: [
-    BrowserAnimationsModule,
+
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     HttpClientModule,
     AppRoutingModule,

@@ -4,13 +4,16 @@
   border-radius: 5px
   display: flex
   flex-direction: column
+  transition: all 0.5s ease-in-out
+  &:hover
+    box-shadow: 6px 4px 8px 3px #d4d0d0
   .image
     flex: 5
     min-height: 0
     display: flex
     justify-content: center
     align-items: center
-    background-color: skyblue
+    background-color: var(--accent)
     border-radius: 5px 5px 0 0
     img
       clip-path: circle()
