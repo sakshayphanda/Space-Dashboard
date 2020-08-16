@@ -29,7 +29,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
       data.forEach((item) => {
         yearFilter.add(item.launch_year);
       });
-      console.log(yearFilter);
 
       this.globalDataService.launchYears.next(yearFilter);
     });
