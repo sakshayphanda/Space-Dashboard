@@ -1,6 +1,6 @@
 <div class="dashboard">
   <div class="dashboard__card_container">
-    <ng-container *ngFor="let flight of globalDataService.allData | async">
+    <ng-container *ngFor="let flight of globalDataService.allData | async;">
       <app-card [data]="flight"></app-card>
     </ng-container>
   </div>

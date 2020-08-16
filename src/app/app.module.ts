@@ -7,7 +7,6 @@ import { CoreModule } from './modules/core/core.module';
 import { GlobalDataService } from './shared/services/global-data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpService } from './shared/services/http.service';
-import { LazyLoadImageModule, LAZYLOAD_IMAGE_HOOKS, ScrollHooks } from 'ng-lazyload-image';
 
 
 @NgModule({
@@ -18,8 +17,7 @@ import { LazyLoadImageModule, LAZYLOAD_IMAGE_HOOKS, ScrollHooks } from 'ng-lazyl
     AppRoutingModule,
     CoreModule,
 ],
-  providers: [GlobalDataService, HttpService,
-    { provide: LAZYLOAD_IMAGE_HOOKS, useClass: ScrollHooks }],
+  providers: [GlobalDataService, HttpService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

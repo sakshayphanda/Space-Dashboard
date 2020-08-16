@@ -34,6 +34,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
     });
   }
 
+  trackByID(item) {
+    return item.flight_number;
+  }
+
   ngOnDestroy() {
     this.$data.unsubscribe();
   }
