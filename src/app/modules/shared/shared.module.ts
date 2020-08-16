@@ -7,15 +7,14 @@ import { CardComponent } from '../../components/card/card.component';
 
 
 @NgModule({
-  declarations: [CardComponent],
+  declarations: [
+    CardComponent
+  ],
   imports: [
-    CommonModule,
-    BrowserAnimationsModule,
-    BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    CommonModule
   ],
   exports: [
-    BrowserAnimationsModule,
-    BrowserModule
+    CardComponent
   ]
 })
 export class SharedModule { }

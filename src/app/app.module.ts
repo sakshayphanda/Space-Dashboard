@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './modules/core/core.module';
 import { GlobalDataService } from './shared/services/global-data.service';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpService } from './shared/services/http.service';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,7 @@ import { GlobalDataService } from './shared/services/global-data.service';
   imports: [
     BrowserAnimationsModule,
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    HttpClientModule,
     AppRoutingModule,
     AngularFireModule,
     AngularFirestoreModule,
@@ -23,7 +26,8 @@ import { GlobalDataService } from './shared/services/global-data.service';
     CoreModule
   ],
   providers: [
-    GlobalDataService
+    GlobalDataService,
+    HttpService
   ],
   bootstrap: [AppComponent]
 })
