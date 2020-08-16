@@ -10,6 +10,8 @@ export class CardComponent implements OnInit {
 
   @Input() data: IData;
   @Input() itemsToShow: [];
+  lazyLoadImage = 'https://placehold.it/500x250/000000&text=loaded%20image';
+
   constructor() { }
 
   ngOnInit(): void {

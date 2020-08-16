@@ -99,7 +99,7 @@ export interface IData {
     wikipedia: string;
     video_link: string;
     youtube_id: string;
-    flickr_images: [];
+    flickr_images;
   };
   details: string;
   static_fire_date_utc: string;

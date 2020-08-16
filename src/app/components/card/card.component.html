@@ -1,6 +1,6 @@
 <div class="card">
   <div class="image">
-    <img [src]="data.links.mission_patch_small" onerror="this.src='../../../assets/NotAvailable.jpg';">
+    <img alt="mission_patch" [src]="data.links.flickr_images[0] ? data.links.flickr_images[0] : data.links.mission_patch_small" onerror="this.src='../../../assets/NotAvailable.jpg';">
   </div>
   <div class="heading">{{data.mission_name+'#'+ data.flight_number}}</div>
   <div class="details">

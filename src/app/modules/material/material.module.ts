@@ -17,10 +17,6 @@ const modules = [
   MatButtonModule,
   MatSidenavModule,
   MatIconModule,
-  MatListModule,
-  MatGridListModule,
-  MatCardModule,
-  MatMenuModule,
   MatButtonModule,
   LayoutModule,
   BrowserAnimationsModule

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { CardComponent } from '../../components/card/card.component';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 
 
@@ -11,7 +12,9 @@ import { CardComponent } from '../../components/card/card.component';
     CardComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    LazyLoadImageModule
+
   ],
   exports: [
     CardComponent
