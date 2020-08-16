@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { IData } from 'src/app/shared/model/interfaces/IData';
 
 @Component({
   selector: 'app-card',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardComponent implements OnInit {
 
+  @Input() data: IData;
+  @Input() itemsToShow: [];
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }

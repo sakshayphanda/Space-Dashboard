@@ -1,5 +1,44 @@
 .card
-  height: 300px
-  padding: 10px
+  height: 330px
   background: white
   border-radius: 5px
+  display: flex
+  flex-direction: column
+  .image
+    flex: 5
+    min-height: 0
+    display: flex
+    justify-content: center
+    align-items: center
+    background-color: skyblue
+    border-radius: 5px 5px 0 0
+    img
+      clip-path: circle()
+      width: 140px
+      height: 100px
+      border-radius: 5px 5px 0 0
+  .heading
+    flex: 1
+    font-weight: 600
+    font-size: 1.2rem
+    color: #1d1b1b
+    padding: 8px
+  .details
+    flex: 4
+    padding: 10px
+    .item
+      display: flex
+      justify-content: space-between
+      .title
+        font-size: 0.8rem
+        font-weight: 600
+        color: grey
+      .value
+        font-size: 0.8rem
+
+
+
+li
+  margin-left: 15px
+
+

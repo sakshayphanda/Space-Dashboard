@@ -1,1 +1,29 @@
-<div class="sidebar"></div>
+<div class="sidebar">
+  <div class="filters">
+    <div>Filters</div>
+    <div>Launch Year</div>
+    <div class="year">
+      <ng-container *ngFor="let year of (globalDataService.launchYears | async)">
+        <button  mat-stroked-button (click)="changeSelectedYear(year)">{{year}}</button>
+      </ng-container>
+    </div>
+    <div>
+      <p>Successful Launch</p>
+      <div class="buttons">
+        <button mat-stroked-button (click)="changeLaunchFilter(true)">True</button>
+        <button mat-stroked-button (click)="changeLaunchFilter(false)">False</button>
+      </div>
+    </div>
+
+    <div>
+      <p>Successful Landing</p>
+      <div class="buttons">
+        <button mat-stroked-button (click)="changeLandingFilter(true)">True</button>
+        <button mat-stroked-button (click)="changeLandingFilter(false)">False</button>
+      </div>
+    </div>
+
+
+
+  </div>
+</div>

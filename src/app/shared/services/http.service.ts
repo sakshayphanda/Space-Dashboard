@@ -11,7 +11,7 @@ export class HttpService {
     private httpClient: HttpClient
   ) { }
 
-  get(url): Observable<object> {
+  get(url): Observable<any> {
     return this.httpClient.get(url);
   }
 }

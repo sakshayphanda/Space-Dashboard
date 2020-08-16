@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {Meta} from '@angular/platform-browser';
 
 @Component({
@@ -6,10 +6,8 @@ import {Meta} from '@angular/platform-browser';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.sass']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'spacexDashboard';
-  favicon_url= '../favicon.ico';
-
   constructor(private meta: Meta) {
 
   }
