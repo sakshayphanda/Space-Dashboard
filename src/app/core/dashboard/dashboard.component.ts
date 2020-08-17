@@ -17,7 +17,7 @@ import { skip } from 'rxjs/operators';
 })
 export class DashboardComponent implements OnInit, OnDestroy {
   flightData: IData[] = [];
-  sum = 40;
+  sum = 20;
   array = [];
   $data: Subscription = null;
   // @HostBinding('style.width') width = '100%';
@@ -75,7 +75,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.addItems(startIndex, endIndex);
   }
 
-  onScroll(ev) {
+  onScroll() {
     // console.log('scrolled down!!', ev);
     const start = this.sum;
     this.sum += 20;
