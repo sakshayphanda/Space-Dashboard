@@ -20,6 +20,10 @@ You can apply filters to it like:
 # API's to Fetch data
   - https://api.spacexdata.com/v3/launches?limit=100
   - https://api.spacexdata.com/v3/launches?limit=100&launch_year=2014
+  
+# LightHouse Scores
+![Build Status](https://storage.googleapis.com/images-bemeanstack/Screenshot%202020-08-17%20at%207.13.29%20AM.png)
+
 
 # SpacexDashboard
 

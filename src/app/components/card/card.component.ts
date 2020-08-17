@@ -9,9 +9,6 @@ import { IData } from 'src/app/shared/model/interfaces/IData';
 export class CardComponent implements OnInit {
 
   @Input() data: IData;
-  @Input() itemsToShow: [];
-  show = false;
-
   constructor() { }
 
   ngOnInit(): void {
