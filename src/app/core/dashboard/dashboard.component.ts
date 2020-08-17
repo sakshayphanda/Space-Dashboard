@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostBinding, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { HttpService } from '../../shared/services/http.service';
 import { API } from '../../shared/enum/api.enum';
@@ -15,6 +15,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   flightData: IData[] = [];
   itemsToShow = ['mission_id', 'launch_year', 'launch_success', 'land_success'];
   $data: Subscription = null;
+  // @HostBinding('style.width') width = '100%';
 
   constructor(
     private httpService: HttpService,

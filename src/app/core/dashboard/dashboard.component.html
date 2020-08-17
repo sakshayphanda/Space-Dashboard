@@ -1,6 +1,9 @@
 <div class="dashboard">
   <div class="dashboard__card_container">
-    <ng-container *ngFor="let flight of globalDataService.allData | async;">
+    <!-- <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
+      <ng-container *cdkVirtualFor="let item of items" class="example-item">{{item}}</ng-container>
+    </cdk-virtual-scroll-viewport> -->
+    <ng-container *ngFor="let flight of globalDataService.allData | async; trackByID">
       <app-card [data]="flight"></app-card>
     </ng-container>
   </div>

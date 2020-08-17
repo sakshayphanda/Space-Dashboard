@@ -1,10 +1,11 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from '../../core/dashboard/dashboard.component';
 import { NavigationComponent } from 'src/app/core/navigation/navigation.component';
 import { MaterialModule } from '../material/material.module';
 import { SidebarComponent } from '../../core/sidebar/sidebar.component';
 import { SharedModule } from '../shared/shared.module';
+import { CdkScrollableModule, ScrollingModule } from '@angular/cdk/scrolling';
 
 @NgModule({
   declarations: [
@@ -15,10 +16,15 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     CommonModule,
     MaterialModule,
-    SharedModule
+    SharedModule,
+    ScrollingModule,
+    CdkScrollableModule
   ],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
   exports: [
-    NavigationComponent
+    NavigationComponent,
+    CdkScrollableModule,
+    ScrollingModule
   ]
 })
 export class CoreModule { }

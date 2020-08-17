@@ -30,6 +30,7 @@
     "angular-favicon": "^1.0.3",
     "express": "^4.15.2",
     "google-auth-library": "^6.0.6",
+    "ngx-virtual-scroller": "^4.0.3",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
