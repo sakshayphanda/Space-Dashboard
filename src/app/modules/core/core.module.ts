@@ -5,7 +5,7 @@ import { NavigationComponent } from 'src/app/core/navigation/navigation.componen
 import { MaterialModule } from '../material/material.module';
 import { SidebarComponent } from '../../core/sidebar/sidebar.component';
 import { SharedModule } from '../shared/shared.module';
-import { CdkScrollableModule, ScrollingModule } from '@angular/cdk/scrolling';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [
@@ -17,14 +17,11 @@ import { CdkScrollableModule, ScrollingModule } from '@angular/cdk/scrolling';
     CommonModule,
     MaterialModule,
     SharedModule,
-    ScrollingModule,
-    CdkScrollableModule
+    InfiniteScrollModule
   ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
   exports: [
     NavigationComponent,
-    CdkScrollableModule,
-    ScrollingModule
-  ]
+    ]
 })
 export class CoreModule { }
