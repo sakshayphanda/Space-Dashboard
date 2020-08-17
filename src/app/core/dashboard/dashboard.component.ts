@@ -10,6 +10,7 @@ import { GlobalDataService } from '../../shared/services/global-data.service';
 import { IData } from 'src/app/shared/model/interfaces/IData';
 import { skip } from 'rxjs/operators';
 
+const INITIAL_LIMIT = 20;
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -17,7 +18,7 @@ import { skip } from 'rxjs/operators';
 })
 export class DashboardComponent implements OnInit, OnDestroy {
   flightData: IData[] = [];
-  sum = 20;
+  sum = INITIAL_LIMIT;
   array = [];
   $data: Subscription = null;
   // @HostBinding('style.width') width = '100%';
@@ -36,7 +37,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
       data.forEach((item) => {
         yearFilter.add(item.launch_year);
       });
-      // this.pushInitialData();
       this.globalDataService.launchYears.next(yearFilter);
     });
 
@@ -50,7 +50,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   pushInitialData() {
-    this.sum = 40;
+    this.sum = INITIAL_LIMIT;
     if(this.sum > this.flightData.length) {
       this.sum = this.flightData.length;
     }
