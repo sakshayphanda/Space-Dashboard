@@ -1,10 +1,15 @@
 <div class="dashboard">
-  <div class="dashboard__card_container" infinite-scroll infiniteScroll
-  [infiniteScrollDistance]="2"
+  <div
+    class="dashboard__card_container"
+    infinite-scroll
+    infiniteScroll
+    [infiniteScrollDistance]="2"
     [infiniteScrollThrottle]="50"
     [infiniteScrollUpDistance]="1"
     [scrollWindow]="false"
-    (scrolled)="onScroll()" (scrolledUp)="onUp()">
+    (scrolled)="onScroll()"
+    (scrolledUp)="onUp()"
+  >
     <ng-container *ngFor="let i of array">
       <app-card [data]="i"></app-card>
     </ng-container>

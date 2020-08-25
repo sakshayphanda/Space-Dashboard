@@ -1,14 +1,10 @@
-import {
-  Component,
-  OnDestroy,
-  OnInit,
-} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HttpService } from '../../shared/services/http.service';
 import { API } from '../../shared/enum/api.enum';
-import {  Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { GlobalDataService } from '../../shared/services/global-data.service';
 import { IData } from 'src/app/shared/model/interfaces/IData';
-import { skip } from 'rxjs/operators';
+import { skip, take } from 'rxjs/operators';
 
 const INITIAL_LIMIT = 20;
 @Component({
@@ -29,59 +25,47 @@ export class DashboardComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.$data = this.httpService.get(API.ALL_DATA).subscribe((data) => {
-      this.flightData = data;
-      this.globalDataService.allData.next(data);
-
-      const yearFilter = new Set<number>();
-      data.forEach((item) => {
-        yearFilter.add(item.launch_year);
+    this.httpService
+      .get(API.ALL_DATA)
+      .pipe(take(1))
+      .subscribe((data) => {
+        this.flightData = data;
+        this.globalDataService.allData.next(data);
+        const yearFilter = new Set<number>();
+        data.forEach((item) => {
+          yearFilter.add(item.launch_year);
+        });
+        this.globalDataService.launchYears.next(yearFilter);
       });
-      this.globalDataService.launchYears.next(yearFilter);
-    });
 
-    this.globalDataService.allData.pipe(skip(1)).subscribe(
-      i => {
-        console.log(i);
-        this.flightData = i;
-        this.pushInitialData();
-      }
-    );
+    this.$data = this.globalDataService.allData.pipe(skip(1)).subscribe((i) => {
+      this.flightData = i;
+      this.pushInitialData();
+    });
   }
 
   pushInitialData() {
     this.sum = INITIAL_LIMIT;
-    if(this.sum > this.flightData.length) {
+    if (this.sum > this.flightData.length) {
       this.sum = this.flightData.length;
     }
     this.array = [];
-    for (let i = 0; i < this.sum; i++) {
-      this.array.push(this.flightData[i]);
-    }
+    this.array = this.flightData.slice(0, this.sum);
   }
 
   trackByID(index, item) {
-    console.log(item, index);
-
     return item.flight_number;
   }
 
-  addItems(startIndex, endIndex) {
-    for (let i = startIndex; i < endIndex; ++i) {
-      this.array.push(this.flightData[i]);
-    }
-  }
-  appendItems(startIndex, endIndex) {
-    this.addItems(startIndex, endIndex);
+  appendItems(startIndex, count) {
+    this.array = [...this.array, ...this.flightData.slice(startIndex, count)];
   }
 
   onScroll() {
-    // console.log('scrolled down!!', ev);
     const start = this.sum;
     this.sum += 20;
     if (this.sum > this.flightData.length) {
       return;
-     // this.appendItems(start, this.flightData.length);
     }
     this.appendItems(start, this.sum);
   }

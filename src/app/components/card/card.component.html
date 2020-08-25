@@ -1,15 +1,20 @@
 <div class="card">
-  <div class="image" >
-    <img [src]="data.links.flickr_images[0] ? data.links.flickr_images[0] :data.links.mission_patch_small" alt="mission_patch" loading="lazy" onerror="this.src='../../../assets/NotAvailable.jpg'">
+  <div class="image">
+    <img
+      [src]="data.links.flickr_images[0] || data.links.mission_patch_small"
+      alt="mission_patch"
+      loading="lazy"
+      onerror="this.src='../../../assets/NotAvailable.jpg'"
+    />
   </div>
-  <div class="heading">{{data.mission_name+'#'+ data.flight_number}}</div>
+  <div class="heading">{{ data.mission_name + "#" + data.flight_number }}</div>
   <div class="details">
     <div class="item">
       <div class="title">Mission Ids</div>
       <div class="value">
         <ul *ngIf="data.mission_id.length; else NA">
           <li *ngFor="let item of data.mission_id">
-            {{item}}
+            {{ item }}
           </li>
         </ul>
         <ng-template #NA>N.A</ng-template>
@@ -18,17 +23,27 @@
 
     <div class="item">
       <div class="title">Launch Year</div>
-      <div class="value">{{data.launch_year === null ? 'N.A' : data.launch_year }}</div>
+      <div class="value">
+        {{ data.launch_year === null ? "N.A" : data.launch_year }}
+      </div>
     </div>
 
     <div class="item">
       <div class="title">Successful Launch</div>
-      <div class="value">{{data.launch_success === null ? 'N.A': data.launch_success}}</div>
+      <div class="value">
+        {{ data.launch_success === null ? "N.A" : data.launch_success }}
+      </div>
     </div>
 
     <div class="item">
       <div class="title">Successful Landing</div>
-      <div class="value">{{data.rocket.first_stage.cores[0].land_success  === null ? 'N.A': data.rocket.first_stage.cores[0].land_success}}</div>
+      <div class="value">
+        {{
+          data.rocket.first_stage.cores[0].land_success === null
+            ? "N.A"
+            : data.rocket.first_stage.cores[0].land_success
+        }}
+      </div>
     </div>
   </div>
 </div>
