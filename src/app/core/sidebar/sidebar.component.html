@@ -2,36 +2,71 @@
   <div class="filters">
     <div class="heading">Filters</div>
     <p class="filter__title">Launch Year</p>
-    <div class="year">
-      <ng-container *ngFor="let year of (globalDataService.launchYears | async)">
-        <button [class.selected]="filters.has(API.LAUNCH_YEAR) && filters.get(API.LAUNCH_YEAR) === year"
-          mat-raised-button (click)="changeSelectedYear(year)">{{year}}</button>
+    <div class="year" (click)="changeSelectedYear($event)">
+      <ng-container *ngFor="let year of globalDataService.launchYears | async">
+        <button [id]="year"
+          data-action="save"
+          [class.selected]="
+            filters.has(API.LAUNCH_YEAR) &&
+            filters.get(API.LAUNCH_YEAR) === year
+          "
+          mat-raised-button
+        >
+          {{ year }}
+        </button>
       </ng-container>
     </div>
     <p class="filter__title">Successful Launch</p>
     <div class="launch">
-      <button [class.selected]="filters.has(API.LAUNCH_SUCCESS) && filters.get(API.LAUNCH_SUCCESS)" mat-raised-button
-        (click)="changeLaunchFilter(true)">True</button>
-      <button [class.selected]="filters.has(API.LAUNCH_SUCCESS) && !filters.get(API.LAUNCH_SUCCESS)" mat-raised-button
-        (click)="changeLaunchFilter(false)">False</button>
+      <button
+        [class.selected]="
+          filters.has(API.LAUNCH_SUCCESS) && filters.get(API.LAUNCH_SUCCESS)
+        "
+        mat-raised-button
+        (click)="changeLaunchFilter(true)"
+      >
+        True
+      </button>
+      <button
+        [class.selected]="
+          filters.has(API.LAUNCH_SUCCESS) && !filters.get(API.LAUNCH_SUCCESS)
+        "
+        mat-raised-button
+        (click)="changeLaunchFilter(false)"
+      >
+        False
+      </button>
     </div>
 
     <p class="filter__title">Successful Landing</p>
     <div class="land">
-      <button [class.selected]="filters.has(API.LAND_SUCCESS) && filters.get(API.LAND_SUCCESS)" mat-raised-button
-        (click)="changeLandingFilter(true)">True</button>
-      <button [class.selected]="filters.has(API.LAND_SUCCESS) && !filters.get(API.LAND_SUCCESS)" mat-raised-button
-        (click)="changeLandingFilter(false)">False</button>
+      <button
+        [class.selected]="
+          filters.has(API.LAND_SUCCESS) && filters.get(API.LAND_SUCCESS)
+        "
+        mat-raised-button
+        (click)="changeLandingFilter(true)"
+      >
+        True
+      </button>
+      <button
+        [class.selected]="
+          filters.has(API.LAND_SUCCESS) && !filters.get(API.LAND_SUCCESS)
+        "
+        mat-raised-button
+        (click)="changeLandingFilter(false)"
+      >
+        False
+      </button>
     </div>
 
     <div>
       <p class="filter__title">Reset All Filters</p>
       <div class="buttons">
-        <button mat-raised-button (click)="fetchFilteredData(true)">Reset</button>
+        <button mat-raised-button (click)="fetchFilteredData(true)">
+          Reset
+        </button>
       </div>
     </div>
-
-
-
   </div>
 </div>

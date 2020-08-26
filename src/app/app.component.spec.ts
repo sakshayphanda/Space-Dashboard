@@ -1,35 +1,41 @@
-import { TestBed, async } from '@angular/core/testing';
+import {
+  TestBed,
+  async,
+  ComponentFixture,
+  tick,
+  fakeAsync,
+} from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+  let title = '';
+  let expected = 'spacexDashboard';
+  // before each test configure the module by declaring components and providing services
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
+      declarations: [AppComponent],
     }).compileComponents();
   }));
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
-
-  it(`should have as title 'spacexDashboard'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('spacexDashboard');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+    title = component.title;
     fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('spacexDashboard app is running!');
   });
+
+  afterEach(() => {
+    title = '';
+  });
+  it('should have variable with title = spacexDashboard', () => {
+    expect(title).toBe(expected);
+  });
+
+  it('should have variable with title != spacex', fakeAsync(() => {
+    // tick(500);// timeout for the testing
+    expect(title).not.toBe('spacexx');
+  }));
 });

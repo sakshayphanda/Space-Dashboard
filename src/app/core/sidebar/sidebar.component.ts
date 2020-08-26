@@ -19,7 +19,8 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  changeSelectedYear(year: number) {
+  changeSelectedYear(event) {
+    const year = event.target.id;
     this.filters.set(API.LAUNCH_YEAR, year);
     this.fetchFilteredData();
   }
@@ -35,12 +36,17 @@ export class SidebarComponent implements OnInit {
   }
 
   fetchFilteredData(reset?) {
-    let URL = `${API.ALL_DATA}`;
+    const URL = `${API.ALL_DATA}`;
     if (reset) {
       this.filters.clear();
       this.hitApi(URL);
       return;
     }
+    const updatedURL = this.updateURL(URL);
+    this.hitApi(updatedURL);
+  }
+
+  updateURL(URL) {
     if (this.filters.has(API.LAUNCH_YEAR)) {
       URL = URL + `&${API.LAUNCH_YEAR}=${this.filters.get(API.LAUNCH_YEAR)}`;
     }
@@ -51,7 +57,7 @@ export class SidebarComponent implements OnInit {
       URL =
         URL + `&${API.LAUNCH_SUCCESS}=${this.filters.get(API.LAUNCH_SUCCESS)}`;
     }
-    this.hitApi(URL);
+    return URL;
   }
 
   hitApi(URL) {
