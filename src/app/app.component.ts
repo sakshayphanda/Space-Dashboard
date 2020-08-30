@@ -16,4 +16,8 @@ export class AppComponent implements OnInit {
         'SpaceX designs, manufactures and launches advanced rockets and spacecraft. This is basically a dashboard to show the details of spacecrafts and advanced rockets',
     });
   }
+
+  log() {
+    console.log('app root');
+  }
 }

@@ -1,18 +1,21 @@
+import { DebugElement } from '@angular/core';
 import {
-  TestBed,
   async,
   ComponentFixture,
-  tick,
   fakeAsync,
+  TestBed,
 } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { By } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 
-describe('AppComponent', () => {
+xdescribe('AppComponent', () => {
   let component: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
   let title = '';
-  let expected = 'spacexDashboard';
+  let debugElement: DebugElement;
+  const expected = 'spacexDashboard';
+  const exEl = 'Hellooooo';
+  let el: DebugElement;
   // before each test configure the module by declaring components and providing services
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -23,7 +26,9 @@ describe('AppComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AppComponent);
     component = fixture.componentInstance;
+    debugElement = fixture.debugElement;
     title = component.title;
+    el = debugElement.query(By.css('.abc'));
     fixture.detectChanges();
   });
 
@@ -38,4 +43,8 @@ describe('AppComponent', () => {
     // tick(500);// timeout for the testing
     expect(title).not.toBe('spacexx');
   }));
+
+  it('should have html div with title != Helloooo', () => {
+    expect(el.nativeElement.textContent).toBe(exEl);
+  });
 });

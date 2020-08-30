@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { filter } from 'rxjs/operators';
 import { API } from 'src/app/shared/enum/api.enum';
 import { GlobalDataService } from '../../shared/services/global-data.service';
 import { HttpService } from '../../shared/services/http.service';
@@ -19,7 +18,13 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  log() {
+    console.log('Side bar root');
+  }
+
   changeSelectedYear(event) {
+    console.log(event);
+
     const year = event.target.id;
     this.filters.set(API.LAUNCH_YEAR, year);
     this.fetchFilteredData();
@@ -61,7 +66,9 @@ export class SidebarComponent implements OnInit {
   }
 
   hitApi(URL) {
+    console.log(URL);
     this.httpService.get(URL).subscribe((i) => {
+      console.log(i);
       this.globalDataService.allData.next(i);
     });
   }

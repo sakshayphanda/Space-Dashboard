@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class NavigationComponent {
   constructor() {}
+
+  log() {
+    console.log('Nav bar root');
+  }
 }

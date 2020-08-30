@@ -1,10 +1,11 @@
-<div class="sidebar">
+<div class="sidebar" (click)="log()">
   <div class="filters">
     <div class="heading">Filters</div>
     <p class="filter__title">Launch Year</p>
     <div class="year" (click)="changeSelectedYear($event)">
       <ng-container *ngFor="let year of globalDataService.launchYears | async">
-        <button [id]="year"
+        <button
+          [id]="year"
           data-action="save"
           [class.selected]="
             filters.has(API.LAUNCH_YEAR) &&
