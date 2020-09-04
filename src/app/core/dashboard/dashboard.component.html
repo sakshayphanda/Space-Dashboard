@@ -1,4 +1,8 @@
 <div class="dashboard">
+  <button (click)="AppName = 'Custom 2 way binding example'">
+    {{ AppName }}
+  </button>
+
   <div
     class="dashboard__card_container"
     infinite-scroll
@@ -11,7 +15,7 @@
     (scrolledUp)="onUp()"
   >
     <ng-container *ngFor="let i of array">
-      <app-card [title]="'sakshay'" [data]="i"></app-card>
+      <app-card [(title)]="AppName" [data]="i"></app-card>
     </ng-container>
   </div>
 

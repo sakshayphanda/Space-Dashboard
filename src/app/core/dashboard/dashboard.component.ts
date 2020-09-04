@@ -1,10 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { HttpService } from '../../shared/services/http.service';
-import { API } from '../../shared/enum/api.enum';
 import { Subscription } from 'rxjs';
-import { GlobalDataService } from '../../shared/services/global-data.service';
-import { IData } from 'src/app/shared/model/interfaces/IData';
 import { skip, take } from 'rxjs/operators';
+import { IData } from 'src/app/shared/model/interfaces/IData';
+import { API } from '../../shared/enum/api.enum';
+import { GlobalDataService } from '../../shared/services/global-data.service';
+import { HttpService } from '../../shared/services/http.service';
 
 const INITIAL_LIMIT = 20;
 @Component({
@@ -18,6 +18,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   array = [];
   $data: Subscription = null;
   // @HostBinding('style.width') width = '100%';
+  AppName = 'SpaceX';
 
   constructor(
     private httpService: HttpService,
