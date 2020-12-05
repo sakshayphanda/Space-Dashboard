@@ -19,7 +19,7 @@ import { CommonModule } from '@angular/common';
     CoreModule,
     CommonModule
 ],
-schemas:[CUSTOM_ELEMENTS_SCHEMA],
+schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [GlobalDataService, HttpService],
   bootstrap: [AppComponent],
 })

@@ -8,16 +8,21 @@ import { Meta } from '@angular/platform-browser';
 })
 export class AppComponent implements OnInit {
   title = 'spacexDashboard';
-  constructor(private meta: Meta) {}
+  constructor(public meta: Meta) {}
   ngOnInit() {
-    this.meta.addTag({
+    this.addTags();
+  }
+
+  addTags() {
+    const tag = this.getTag();
+    this.meta.addTag(tag);
+  }
+
+  getTag() {
+    return {
       name: 'description',
       content:
         'SpaceX designs, manufactures and launches advanced rockets and spacecraft. This is basically a dashboard to show the details of spacecrafts and advanced rockets',
-    });
-  }
-
-  log() {
-    console.log('app root');
+    };
   }
 }

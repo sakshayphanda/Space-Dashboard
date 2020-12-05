@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import {
   async,
@@ -7,7 +8,11 @@ import {
   tick,
 } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { of } from 'rxjs';
+import { CoreModule } from 'src/app/modules/core/core.module';
+import { MaterialModule } from 'src/app/modules/material/material.module';
+import { SharedModule } from 'src/app/modules/shared/shared.module';
 import { GlobalDataService } from 'src/app/shared/services/global-data.service';
 import { HttpService } from 'src/app/shared/services/http.service';
 import { SidebarComponent } from './sidebar.component';
@@ -17,7 +22,7 @@ describe('SidebarComponent', () => {
   let fixture: ComponentFixture<SidebarComponent>;
 
   beforeEach(async(() => {
-    let serviceStub = {
+    const serviceStub = {
       get: () => {
         console.log('HIII');
 
@@ -27,7 +32,13 @@ describe('SidebarComponent', () => {
       },
     };
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [
+        HttpClientTestingModule,
+        CommonModule,
+        MaterialModule,
+        SharedModule,
+        CoreModule
+      ],
       declarations: [SidebarComponent],
       providers: [
         {
@@ -57,13 +68,19 @@ describe('SidebarComponent', () => {
 
   it('should apply filter', fakeAsync(() => {
     const year = fixture.debugElement.query(By.css('.year'));
+    const spy = spyOn(component, 'changeSelectedYear');
+
     year.triggerEventHandler('click', {
       target: {
         id: 3231,
       },
     });
 
+    expect(spy).toHaveBeenCalled();
+
+
     tick(2);
     fixture.detectChanges();
+
   }));
 });
