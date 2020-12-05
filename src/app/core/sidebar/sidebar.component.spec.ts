@@ -66,6 +66,12 @@ describe('SidebarComponent', () => {
     );
   });
 
+  it('should call log', () => {
+    const spy = spyOn(console, 'log');
+    component.log();
+    expect(spy).toHaveBeenCalled();
+  });
+
   it('should apply filter', fakeAsync(() => {
     const year = fixture.debugElement.query(By.css('.year'));
     const spy = spyOn(component, 'changeSelectedYear');

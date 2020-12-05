@@ -1,5 +1,5 @@
 import { LayoutModule } from '@angular/cdk/layout';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -8,8 +8,12 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { NavigationComponent } from './navigation.component';
+import { By } from '@angular/platform-browser';
+import { AppModule } from 'src/app/app.module';
+import { AppRoutingModule } from 'src/app/app-routing.module';
+import { RouterTestingModule } from '@angular/router/testing';
 
-xdescribe('NavigationComponent', () => {
+describe('NavigationComponent', () => {
   let component: NavigationComponent;
   let fixture: ComponentFixture<NavigationComponent>;
 
@@ -24,6 +28,10 @@ xdescribe('NavigationComponent', () => {
         MatListModule,
         MatSidenavModule,
         MatToolbarModule,
+        AppModule,
+        AppRoutingModule,
+        RouterTestingModule.withRoutes([])
+
       ],
     }).compileComponents();
   }));
@@ -36,5 +44,11 @@ xdescribe('NavigationComponent', () => {
 
   it('should compile', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should call log', () => {
+    const spy = spyOn(console, 'log');
+    component.log();
+    expect(spy).toHaveBeenCalled();
   });
 });
