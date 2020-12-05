@@ -8,7 +8,7 @@ import {
 import { By } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 
-xdescribe('AppComponent', () => {
+fdescribe('AppComponent', () => {
   let component: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
   let title = '';

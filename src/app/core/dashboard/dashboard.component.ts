@@ -33,7 +33,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
         this.flightData = data;
         this.globalDataService.allData.next(data);
         const yearFilter = new Set<number>();
-        data.forEach((item) => {
+        data?.forEach((item) => {
           yearFilter.add(item.launch_year);
         });
         this.globalDataService.launchYears.next(yearFilter);
